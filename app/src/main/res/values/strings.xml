@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">vinilosMusic202412</string>
+    <string name="artista">Conocer Artistas</string>
+    <string name="albumes">Conocer Albumes</string>
+    <string name="coleccionistas">Conocer Coleccionistas</string>
+    <string name="track">Crear Track</string>
+    <string name="album">Crear Album</string>
+</resources>
