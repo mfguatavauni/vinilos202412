@@ -1,32 +1,30 @@
 package com.japago.vinilosmusic202412
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import com.japago.vinilosmusic202412.data.RetrofitServiceFactory
+import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class CatalogoAlbumes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
 
+        val service = RetrofitServiceFactory.makeRetrofitService()
+
+        lifecycleScope.launch {
+            val albumes = service.listCatalogoAlbumes()
+        }
+
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_catalogo_albumes)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        val cvAlbumes: CardView = findViewById(R.id.cvAlbumes)
-
-        cvAlbumes.setOnClickListener {
-            val intent = Intent(this, CatalogoAlbumes::class.java)
-            startActivity(intent)
-        }
-
     }
-
 }
