@@ -48,6 +48,9 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
