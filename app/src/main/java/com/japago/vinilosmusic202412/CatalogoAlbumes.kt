@@ -40,7 +40,7 @@ class CatalogoAlbumes : AppCompatActivity() {
             insets
         }
 
-        val btnRegresar: Button = findViewById(R.id.button)
+        val btnRegresar: Button = findViewById(R.id.btnRegresarCatalogoAlbumes)
 
         btnRegresar.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

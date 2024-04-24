@@ -51,6 +51,19 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
 
+    // Dependencia para las pruebas de Espresso
+    androidTestImplementation (libs.androidx.espresso.core.v340)
+    // Dependencia para reglas de pruebas
+    androidTestImplementation (libs.androidx.junit.v113)
+
+    testImplementation (libs.junit.v412)
+    androidTestImplementation (libs.runner)
+    androidTestImplementation ("com.android.support.test.espresso:espresso-core:3.0.1")
+
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
