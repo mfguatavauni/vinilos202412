@@ -16,7 +16,7 @@ interface RetrofitService {
 object RetrofitServiceFactory{
     fun makeRetrofitService(): RetrofitService{
         return Retrofit.Builder()
-            .baseUrl("http://34.133.126.239:3000/")
+            .baseUrl("http://190.109.6.4:3000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(RetrofitService::class.java)
     }
