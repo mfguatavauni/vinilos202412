@@ -1,170 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CrearAlbum">
-
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        android:background="@color/white">
-        <com.google.android.material.appbar.AppBarLayout
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/appBarLayout">
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/toolbar"
-                android:background="@color/black"
-                android:minHeight="?attr/actionBarSize"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/album"
-                    android:textSize="17sp"
-                    android:gravity="center_vertical"
-                    android:fontFamily="@font/robotoregular"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="20dp"
-                    />
-            </androidx.appcompat.widget.Toolbar>
-        </com.google.android.material.appbar.AppBarLayout>
+        tools:context=".CrearAlbum">
 
 
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="58dp"
-            android:padding="16dp">
+            tools:context=".MainActivity"
+            android:background="@color/white">
 
-
-            <!--Control Nombre del Album -->
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <com.google.android.material.appbar.AppBarLayout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nameAlbum">
+                android:id="@+id/appBarLayout">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idName"
+                <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLength="20"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:id="@+id/toolbar"
+                    android:background="@color/black"
+                    android:minHeight="?attr/actionBarSize">
 
-            <!--Control url Cover -->
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/album"
+                        android:textSize="17sp"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/robotoregular"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="20dp" />
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/nameUrl">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idCover"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="58dp"
+                android:padding="16dp">
+
+
+                <!--Control Nombre del Album -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLength="200"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:hint="@string/nameAlbum">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/idName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="20"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <!--Control Release date -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/dateRelease">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idReleaseDate"
+                <!--Control url Cover -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="false"
-                    android:clickable="true"
-                    android:inputType="none"
-                    android:cursorVisible="false"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:hint="@string/nameUrl">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/idCover"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="200"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-            <!--Control Genero -->
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/inputGenre">
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/idGenre"
+                <!--Control Release date -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/dateRelease">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/idReleaseDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:inputType="none"
+                        android:cursorVisible="false"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Control Genero -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/inputGenre">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/idGenre"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:clickable="true"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Control Disquera -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/inputRecord">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/idRecord"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:clickable="true"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--Control descripcion-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/inputDescription">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/idDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:maxLines="10"
+                        android:minLines="4"
+                        android:maxLength="250"
+                        android:scrollbars="vertical"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Button
+                    android:id="@+id/submitButton"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:inputType="none"
-                    android:focusable="false"
-                    android:clickable="true"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="10dp"
+                    android:text="@string/btnSave" />
 
 
-            <!--Control Disquera -->
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/inputRecord">
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/idRecord"
+                <Button
+                    android:id="@+id/cmdRetornar"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:inputType="none"
-                    android:focusable="false"
-                    android:clickable="true"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="46dp"
+                    android:layout_gravity="bottom"
+                    android:text="@string/btnReturn" />
 
+            </LinearLayout>
 
-            <!--Control descripcion-->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/inputDescription">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/idDesc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:maxLines="10"
-                    android:minLines="4"
-                    android:maxLength="250"
-                    android:scrollbars="vertical" />
-            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            <Button
-                android:id="@+id/submitButton"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/btnSave" />
-
-
-            <Button
-                android:id="@+id/cmdRetornar"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="46dp"
-                android:layout_gravity="bottom"
-                android:text="@string/btnReturn" />
-
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

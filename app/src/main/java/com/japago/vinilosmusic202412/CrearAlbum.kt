@@ -2,25 +2,22 @@ package com.japago.vinilosmusic202412
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.Gravity
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ListView
-import android.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.android.volley.Response
-import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import data.VolleyBroker
-import viewmodels.ContadorViewModel
-import android.view.MenuItem
 import android.widget.Toast
 import com.google.android.material.datepicker.MaterialDatePicker
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -29,7 +26,6 @@ import java.util.Locale
 
 class CrearAlbum : AppCompatActivity() {
     lateinit var volleyBroker: VolleyBroker
-    private val contadorViewModel: ContadorViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,25 +73,53 @@ class CrearAlbum : AppCompatActivity() {
             val (valida, mensaje) = validateInputs(txtName, txtUrlCover, txtDateRelease, txtGenred, txtRecord, txtMulti)
 
             if (valida){
-                showToast("Registrado correctamente")
+                //showToast("Registrado correctamente")
+
+                val postParams = mapOf<String, Any>(
+                    "name" to  txtName.text.toString(),
+                    "cover" to  txtUrlCover.text.toString(),
+                    "releaseDate" to  txtDateRelease.text.toString(),
+                    "description" to  txtMulti.text.toString(),
+                    "genre" to  txtGenred.text.toString(),
+                    "recordLabel" to  txtRecord.text.toString()
+                )
+
+                //Invocar el servicio
+                volleyBroker.instance.add(VolleyBroker.postRequest("albums", JSONObject(postParams),
+                    { response ->
+                        // Display the first 500 characters of the response string.
+                        //showToast("Response is: ${response}")
+
+                        showToast("Registrado correctamente")
+
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            // Código a ejecutar después del retraso
+                            //Retornar a la pantalla principal
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+
+                        }, 2000) // Retraso en milisegundos
+
+
+                    },
+                    {
+                        //Log.d("TAG", it.toString())
+                        showToast("That didn't work!" + it.toString())
+                    }
+                ))
+
+
+
+
+
+
+
             }else{
                 showToast("Validar:\n$mensaje")
             }
 
 
-            //Invocar el servicio
-            if (2 ==3){
-                volleyBroker.instance.add(VolleyBroker.getRequest("collectors",
-                    { response ->
-                        // Display the first 500 characters of the response string.
-                        txtMulti.setText("Response is: ${response}")
-                    },
-                    {
-                        //Log.d("TAG", it.toString())
-                        txtMulti.setText("That didn't work!" + it.toString())
-                    }
-                ))
-            }
+
         }
 
         btnRetornar.setOnClickListener{
