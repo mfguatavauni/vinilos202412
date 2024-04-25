@@ -60,6 +60,30 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+
+    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+
+    // Dependencia para las pruebas de Espresso
+    androidTestImplementation (libs.androidx.espresso.core.v340)
+    // Dependencia para reglas de pruebas
+    androidTestImplementation (libs.androidx.junit.v113)
+
+    testImplementation (libs.junit.v412)
+    androidTestImplementation (libs.runner)
+    androidTestImplementation ("com.android.support.test.espresso:espresso-core:3.0.1")
+
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
+
+
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     // https://mvnrepository.com/artifact/com.android.volley/volley
@@ -73,6 +97,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     //implementation(libs.androidx.material3)
     implementation(libs.androidx.material3.android)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
