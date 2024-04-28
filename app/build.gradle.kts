@@ -82,7 +82,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
 
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
-
+    androidTestImplementation ("androidx.test.uiautomator:uiautomator:2.2.0")
 
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
