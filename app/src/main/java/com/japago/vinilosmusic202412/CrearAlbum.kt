@@ -1,24 +1,26 @@
 package com.japago.vinilosmusic202412
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 import data.VolleyBroker
-import android.widget.Toast
-import com.google.android.material.datepicker.MaterialDatePicker
 import org.json.JSONObject
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
@@ -28,6 +30,7 @@ class CrearAlbum : AppCompatActivity() {
     lateinit var volleyBroker: VolleyBroker
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -74,11 +77,12 @@ class CrearAlbum : AppCompatActivity() {
 
             if (valida){
                 //showToast("Registrado correctamente")
-
+                val parser = SimpleDateFormat("dd/MM/yyyy")
+                val formatter = SimpleDateFormat("MM.dd.yyyy")
                 val postParams = mapOf<String, Any>(
                     "name" to  txtName.text.toString(),
                     "cover" to  txtUrlCover.text.toString(),
-                    "releaseDate" to  txtDateRelease.text.toString(),
+                    "releaseDate" to  formatter.format(parser.parse(txtDateRelease.text.toString())),
                     "description" to  txtMulti.text.toString(),
                     "genre" to  txtGenred.text.toString(),
                     "recordLabel" to  txtRecord.text.toString()

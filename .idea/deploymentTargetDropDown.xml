@@ -2,7 +2,38 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="All Tests">
+        <State />
+      </entry>
       <entry key="CatalogoAlbumesTest">
+        <State />
+      </entry>
+      <entry key="app">
+        <State />
+      </entry>
+      <entry key="testCreateBorderAlbum()">
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\PERSONAL\.android\avd\Pixel_6_Pro_API_26.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-04-27T22:57:10.716635400Z" />
+        </State>
+      </entry>
+      <entry key="testCreateNullAlbum()">
+        <State />
+      </entry>
+      <entry key="testGuestCreateAlbum()">
+        <State />
+      </entry>
+      <entry key="testRecyclerViewItemCount()">
         <State />
       </entry>
     </value>
