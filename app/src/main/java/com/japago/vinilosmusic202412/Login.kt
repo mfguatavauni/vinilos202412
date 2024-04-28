@@ -5,39 +5,34 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_login)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
+        val btnUsuario1 = findViewById<Button>(R.id.Usuario1)
+        val btnUsuario2 = findViewById<Button>(R.id.Usuario2)
 
-        val cvAlbumes: CardView = findViewById(R.id.cvAlbumes)
 
-        cvAlbumes.setOnClickListener {
-            val intent = Intent(this, CatalogoAlbumes::class.java)
+
+        btnUsuario1.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-        val btnCrearAlbum = findViewById<Button>(R.id.btnCrearAlbum)
-
-        btnCrearAlbum.setOnClickListener {
-            val intent = Intent(this, CrearAlbum::class.java)
-            startActivity(intent)
-
+        btnUsuario2.setOnClickListener{
 
         }
+
 
     }
-
 }
