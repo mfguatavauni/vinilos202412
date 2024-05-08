@@ -29,6 +29,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val cvColeccionistas: CardView = findViewById(R.id.cvColeccionistas)
+
+        cvColeccionistas.setOnClickListener {
+            val intent = Intent(this, CatalogoColeccionistas::class.java)
+            startActivity(intent)
+        }
+
         val btnCrearAlbum = findViewById<Button>(R.id.btnCrearAlbum)
 
         btnCrearAlbum.setOnClickListener {
