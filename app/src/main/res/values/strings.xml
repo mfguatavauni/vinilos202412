@@ -62,4 +62,5 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_catalogo_bandas">activity_catalogo_bandas</string>
 </resources>

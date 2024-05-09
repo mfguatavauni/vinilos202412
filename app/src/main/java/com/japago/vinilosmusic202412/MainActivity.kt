@@ -21,6 +21,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val cvArtistas: CardView = findViewById(R.id.cvArtistas)
+
+        cvArtistas.setOnClickListener {
+            val intent = Intent(this, CatalogoBandas::class.java)
+            startActivity(intent)
+        }
 
         val cvAlbumes: CardView = findViewById(R.id.cvAlbumes)
 
@@ -41,8 +47,6 @@ class MainActivity : AppCompatActivity() {
         btnCrearAlbum.setOnClickListener {
             val intent = Intent(this, CrearAlbum::class.java)
             startActivity(intent)
-
-
         }
 
     }
