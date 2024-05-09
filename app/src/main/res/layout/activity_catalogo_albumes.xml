@@ -13,27 +13,27 @@
         android:id="@+id/btnRegresarCatalogoAlbumes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/primary"
         android:text="Regresar"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black" />
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imgCabecera"
         android:layout_width="match_parent"
         android:layout_height="190dp"
-        app:srcCompat="@drawable/cabecera"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        app:srcCompat="@drawable/cabecera" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_marginVertical="5dp"
         android:layout_height="40dp"
-        app:cardCornerRadius="16dp"
+        android:layout_gravity="center"
+        android:layout_marginVertical="5dp"
         app:cardBackgroundColor="@color/primary"
-        android:layout_gravity="center">
+        app:cardCornerRadius="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,9 +44,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Catalogo de Albumes"
+                android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
