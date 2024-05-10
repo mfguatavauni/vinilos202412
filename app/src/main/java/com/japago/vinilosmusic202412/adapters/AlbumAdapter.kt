@@ -1,5 +1,6 @@
 package com.japago.vinilosmusic202412.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,15 +8,24 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.japago.vinilosmusic202412.DetalleAlbumActivity
 import com.japago.vinilosmusic202412.R
 import com.japago.vinilosmusic202412.data.model.AlbumesItem
 
 class AlbumAdapter(private val albumList: List<AlbumesItem>) : RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
 
-    class AlbumViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class AlbumViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val albumCover: ImageView = view.findViewById(R.id.albumCover)
         val albumName: TextView = view.findViewById(R.id.albumName)
         val albumGenre: TextView = view.findViewById(R.id.albumGenre)
+
+        init {
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetalleAlbumActivity::class.java)
+                intent.putExtra("id_album", albumList[bindingAdapterPosition].id.toInt())
+                itemView.context.startActivity(intent)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
