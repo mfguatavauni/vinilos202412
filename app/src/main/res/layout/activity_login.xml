@@ -17,7 +17,11 @@
         tools:layout_editor_absoluteY="1dp"
         android:background="@color/backcolor"
         android:gravity="center"
-        android:padding="16dp">
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/imgCabecera"
