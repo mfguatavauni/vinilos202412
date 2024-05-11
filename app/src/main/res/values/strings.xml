@@ -1,4 +1,5 @@
 <resources>
+    <string name="interes">Cuál es tu interés</string>
     <string name="app_name">Vinilos Music</string>
     <string name="usuario1">Coleccionista</string>
     <string name="usuario2">Usuario</string>

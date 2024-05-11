@@ -31,7 +31,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/grey"
                     android:paddingTop="3dp"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -39,27 +38,17 @@
                     <TextView
                         android:id="@+id/txtName"
                         android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:layout_margin="3dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="20dp"
                         android:text="@{band.name}"
-                        android:background="@color/white"
-                        android:textStyle="bold" />
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        app:drawableEndCompat="@drawable/vector_flecha_derecha"
+                        app:drawableStartCompat="@drawable/vector_person" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/grey"
-                    android:gravity="center"
-                    android:orientation="horizontal"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/grey"
-                    android:gravity="center"
-                    android:orientation="horizontal"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
