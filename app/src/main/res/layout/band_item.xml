@@ -28,15 +28,11 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="3dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/txtName"
+                        android:paddingTop="3dp"
+                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_margin="20dp"
@@ -47,7 +43,7 @@
                         app:drawableEndCompat="@drawable/vector_flecha_derecha"
                         app:drawableStartCompat="@drawable/vector_person" />
 
-                </LinearLayout>
+
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

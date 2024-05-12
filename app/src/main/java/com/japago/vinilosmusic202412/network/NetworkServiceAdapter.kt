@@ -9,13 +9,14 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.japago.vinilosmusic202412.data.model.Album
 import com.japago.vinilosmusic202412.data.model.Band
 import com.japago.vinilosmusic202412.data.model.Collector
 import org.json.JSONArray
 import org.json.JSONObject
 
 
-class NetworkServiceAdapter constructor(context: Context) {
+class NetworkServiceAdapter(context: Context) {
     companion object{
         const val BASE_URL= "http://190.109.6.4:3000/"
         var instance: NetworkServiceAdapter? = null
@@ -46,6 +47,25 @@ class NetworkServiceAdapter constructor(context: Context) {
                 onError(it)
             }))
     }
+
+    fun createAlbum(album: Album, onComplete:(resp:JSONObject)->Unit, onError: (error: VolleyError)->Unit) {
+        val postParams = mapOf<String, Any>(
+            "name" to  album.name,
+            "cover" to  album.cover,
+            "releaseDate" to  album.releaseDate,
+            "description" to  album.description,
+            "genre" to  album.genre,
+            "recordLabel" to  album.recordLabel
+        )
+        requestQueue.add(postRequest("albums", JSONObject(postParams),
+            { response ->
+                onComplete(response)
+            },
+            {
+                onError(it)
+            }))
+    }
+
 
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)

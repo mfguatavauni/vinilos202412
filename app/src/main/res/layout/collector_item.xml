@@ -44,7 +44,7 @@
                         android:paddingTop="3dp"
                         android:paddingEnd="8dp"
                         android:paddingBottom="3dp"
-                        android:text="name"
+                        android:text="@string/inputName"
                         android:textStyle="bold" />
 
                     <TextView
@@ -73,7 +73,7 @@
                         android:paddingTop="3dp"
                         android:paddingEnd="8dp"
                         android:paddingBottom="3dp"
-                        android:text="Telephone"
+                        android:text="@string/inputPhone"
                         android:textStyle="bold" />
 
                     <TextView
@@ -102,7 +102,7 @@
                         android:paddingTop="3dp"
                         android:paddingEnd="8dp"
                         android:paddingBottom="3dp"
-                        android:text="email"
+                        android:text="@string/inputEmail"
                         android:textStyle="bold" />
 
                     <TextView

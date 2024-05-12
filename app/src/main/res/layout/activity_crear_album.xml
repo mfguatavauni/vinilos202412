@@ -32,6 +32,14 @@
                     android:background="@color/black"
                     android:minHeight="?attr/actionBarSize">
 
+                    <Button
+                        android:id="@+id/cmdRetornar"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="10dp"
+                        android:drawableRight="@drawable/resource_return"
+                        tools:ignore="RtlHardcoded" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -92,7 +100,7 @@
                         android:id="@+id/idReleaseDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="false"
+                        android:focusable="true"
                         android:clickable="true"
                         android:inputType="none"
                         android:cursorVisible="false"/>
@@ -111,7 +119,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:inputType="none"
-                        android:focusable="false"
+                        android:focusable="true"
                         android:clickable="true"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,7 +136,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:inputType="none"
-                        android:focusable="false"
+                        android:focusable="true"
                         android:clickable="true"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,13 +167,6 @@
                     android:text="@string/btnSave" />
 
 
-                <Button
-                    android:id="@+id/cmdRetornar"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="46dp"
-                    android:layout_gravity="bottom"
-                    android:text="@string/btnReturn" />
 
             </LinearLayout>
 
