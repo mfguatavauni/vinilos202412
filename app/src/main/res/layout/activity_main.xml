@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backcolor"
     tools:context=".MainActivity">
 
 
@@ -13,10 +12,12 @@
         android:id="@+id/imgCabecera"
         android:layout_width="match_parent"
         android:layout_height="190dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/img_descripcion"
         app:srcCompat="@drawable/cabecera" />
 
     <LinearLayout
@@ -49,6 +50,7 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
+                    android:contentDescription="@string/img_descripcion"
                     android:src="@drawable/artist"/>
 
                 <LinearLayout
@@ -88,6 +90,7 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
+                    android:contentDescription="@string/img_descripcion"
                     android:src="@drawable/albums"/>
 
                 <LinearLayout
@@ -127,6 +130,7 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
+                    android:contentDescription="@string/img_descripcion"
                     android:src="@drawable/collectors"/>
 
                 <LinearLayout

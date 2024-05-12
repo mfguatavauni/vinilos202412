@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backcolor"
     android:orientation="vertical"
     tools:context=".CatalogoBandas">
 
@@ -26,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="190dp"
         app:srcCompat="@drawable/cabecera"
+        android:contentDescription="@string/img_descripcion"
         android:layout_marginBottom="10dp"/>
 
     <ImageView
@@ -33,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="126dp"
         android:layout_marginBottom="10dp"
+        android:contentDescription="@string/img_descripcion"
         app:srcCompat="@drawable/artist" />
 
     <androidx.recyclerview.widget.RecyclerView

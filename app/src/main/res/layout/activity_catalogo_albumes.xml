@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".CatalogoAlbumes">
 
@@ -15,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/primary"
-        android:text="Regresar"
+        android:text="@string/btnReturn"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -25,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:layout_marginBottom="10dp"
+        android:contentDescription="@string/img_descripcion"
         app:srcCompat="@drawable/cabecera" />
 
     <androidx.cardview.widget.CardView
@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Catalogo de Albumes"
+                android:text="@string/title_catalogo_albumes"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
