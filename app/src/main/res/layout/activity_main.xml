@@ -13,6 +13,7 @@
         android:id="@+id/imgCabecera"
         android:layout_width="match_parent"
         android:layout_height="190dp"
+        android:contentDescription="@string/img_descripcion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +36,7 @@
             android:id="@+id/cvArtistas"
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_marginVertical="30dp"
+            android:layout_marginVertical="20dp"
             app:cardCornerRadius="16dp"
             app:cardBackgroundColor="@color/primary">
 
@@ -49,6 +50,7 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
+                    android:contentDescription="@string/img_descripcion"
                     android:src="@drawable/artist"/>
 
                 <LinearLayout
@@ -74,7 +76,7 @@
             android:id="@+id/cvAlbumes"
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             app:cardCornerRadius="16dp"
             app:cardBackgroundColor="@color/primary">
 
@@ -88,6 +90,7 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
+                    android:contentDescription="@string/img_descripcion"
                     android:src="@drawable/albums"/>
 
                 <LinearLayout
@@ -113,7 +116,6 @@
             android:id="@+id/cvColeccionistas"
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_marginBottom="30dp"
             app:cardCornerRadius="16dp"
             app:cardBackgroundColor="@color/primary">
 
@@ -127,6 +129,7 @@
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
+                    android:contentDescription="@string/img_descripcion"
                     android:src="@drawable/collectors"/>
 
                 <LinearLayout
@@ -156,23 +159,24 @@
         android:id="@+id/lnViewFinal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lnViewCentral"
-        android:orientation="horizontal"
         android:gravity="center"
-        android:paddingVertical="10dp">
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lnViewCentral">
 
         <Button
             android:id="@+id/btnCrearAlbum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/album"
+            android:layout_marginHorizontal="10dp"
             android:fontFamily="@font/robotoregular"
+            android:text="@string/album"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginHorizontal="10dp">
+            android:textStyle="bold">
 
         </Button>
 
@@ -180,11 +184,11 @@
             android:id="@+id/btnCrearTrack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/track"
+            android:layout_marginHorizontal="10dp"
             android:fontFamily="@font/robotoregular"
+            android:text="@string/track"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginHorizontal="10dp">
+            android:textStyle="bold">
         </Button>
 
 

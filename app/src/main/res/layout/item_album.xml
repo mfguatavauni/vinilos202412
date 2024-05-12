@@ -4,13 +4,13 @@
     android:layout_height="wrap_content"
     android:layout_marginVertical="5dp"
     android:orientation="vertical"
-    android:background="@color/grey"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/albumCover"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:contentDescription="@string/img_descripcion"
         android:scaleType="centerCrop"/>
 
     <TextView
