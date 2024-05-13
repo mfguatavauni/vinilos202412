@@ -5,5 +5,8 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.VinilosMusic202412" parent="Base.Theme.VinilosMusic202412" />
+    <style name="Theme.VinilosMusic202412" parent="Base.Theme.VinilosMusic202412" >
+        background: @color/backcolor;
+        <item name="background">@color/backcolor</item>
+    </style>
 </resources>

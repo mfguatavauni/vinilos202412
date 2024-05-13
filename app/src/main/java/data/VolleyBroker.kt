@@ -9,7 +9,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
-class VolleyBroker constructor(context: Context) {
+class VolleyBroker(context: Context) {
     val instance: RequestQueue = Volley.newRequestQueue(context.applicationContext)
 
     companion object{

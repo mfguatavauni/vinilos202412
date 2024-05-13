@@ -1,9 +1,11 @@
 package com.japago.vinilosmusic202412.data
 
 import com.japago.vinilosmusic202412.data.model.AlbumesItem
+import com.japago.vinilosmusic202412.data.model.Collector
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface RetrofitService {
 
@@ -11,6 +13,12 @@ interface RetrofitService {
     suspend fun listCatalogoAlbumes(
     ): List<AlbumesItem>
 
+    @GET("collectors")
+    suspend fun listCollectors(
+    ): List<Collector>
+
+    @GET("albums/{id}")
+    suspend fun getAlbumDetails(@Path("id") id: String): AlbumesItem
 }
 
 object RetrofitServiceFactory{

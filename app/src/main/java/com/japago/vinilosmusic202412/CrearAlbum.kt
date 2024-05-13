@@ -1,57 +1,68 @@
 package com.japago.vinilosmusic202412
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
+import com.japago.vinilosmusic202412.data.model.Album
+import com.japago.vinilosmusic202412.databinding.ActivityCrearAlbumBinding
+import com.japago.vinilosmusic202412.viewmodels.AlbumViewModel
 import data.VolleyBroker
-import android.widget.Toast
-import com.google.android.material.datepicker.MaterialDatePicker
 import org.json.JSONObject
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 
 class CrearAlbum : AppCompatActivity() {
-    lateinit var volleyBroker: VolleyBroker
+    private lateinit var binding: ActivityCrearAlbumBinding
+
+    private val albumViewModel: AlbumViewModel by viewModels()
 
 
+
+    @SuppressLint("SimpleDateFormat")
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_crear_album)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityCrearAlbumBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        albumViewModel.albumModel.observe(this) { currentAlbum ->
+            showToast("Album creado correctamente " + currentAlbum.id)
+            Handler(Looper.getMainLooper()).postDelayed({
+                //Retornar a la pantalla principal
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }, 2000)
         }
 
-        //Consumo de API
-        volleyBroker = VolleyBroker(this.applicationContext)
 
         //Botones
         val btnRetornar = findViewById<Button>(R.id.cmdRetornar)
         val btnCrearAlbum = findViewById<Button>(R.id.submitButton)
 
         //Controles
-        val txtName = findViewById<TextInputEditText>(R.id.idName)
-        val txtUrlCover = findViewById<TextInputEditText>(R.id.idCover)
-        val txtDateRelease = findViewById<TextInputEditText>(R.id.idReleaseDate)
         val txtGenred = findViewById<MaterialAutoCompleteTextView>(R.id.idGenre)
         val txtRecord = findViewById<MaterialAutoCompleteTextView>(R.id.idRecord)
-        val txtMulti = findViewById<TextInputEditText>(R.id.idDesc)
+        val txtDateRelease = findViewById<TextInputEditText>(R.id.idReleaseDate)
 
 
         //Cargar las opciones
@@ -63,70 +74,39 @@ class CrearAlbum : AppCompatActivity() {
         val adapterD = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, itemsDisc)
         txtRecord.setAdapter(adapterD)
 
-
         //Mostrar el calendario para seleccioanr la fecha de lanzamiento
         txtDateRelease.setOnClickListener{
             showDatePickerDialog()
         }
 
         btnCrearAlbum.setOnClickListener{
-            val (valida, mensaje) = validateInputs(txtName, txtUrlCover, txtDateRelease, txtGenred, txtRecord, txtMulti)
+            val (valida, mensaje) = validateInputs(binding.idName.text.toString(), binding.idCover.text.toString(), binding.idReleaseDate.text.toString(), binding.idGenre.text.toString(), binding.idRecord.text.toString(), binding.idDesc.text.toString())
 
             if (valida){
-                //showToast("Registrado correctamente")
+                val parser = SimpleDateFormat("dd/MM/yyyy")
+                val formatter = SimpleDateFormat("MM.dd.yyyy")
 
-                val postParams = mapOf<String, Any>(
-                    "name" to  txtName.text.toString(),
-                    "cover" to  txtUrlCover.text.toString(),
-                    "releaseDate" to  txtDateRelease.text.toString(),
-                    "description" to  txtMulti.text.toString(),
-                    "genre" to  txtGenred.text.toString(),
-                    "recordLabel" to  txtRecord.text.toString()
+                val album = Album(
+                    id = 0,
+                    name = binding.idName.text.toString(),
+                    cover = binding.idCover.text.toString(),
+                    releaseDate = formatter.format(parser.parse(binding.idReleaseDate.text.toString())),
+                    description = binding.idDesc.text.toString(),
+                    genre = binding.idGenre.text.toString(),
+                    recordLabel = binding.idRecord.text.toString()
                 )
 
-                //Invocar el servicio
-                volleyBroker.instance.add(VolleyBroker.postRequest("albums", JSONObject(postParams),
-                    { response ->
-                        // Display the first 500 characters of the response string.
-                        //showToast("Response is: ${response}")
-
-                        showToast("Registrado correctamente")
-
-                        Handler(Looper.getMainLooper()).postDelayed({
-                            // Código a ejecutar después del retraso
-                            //Retornar a la pantalla principal
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-
-                        }, 2000) // Retraso en milisegundos
-
-
-                    },
-                    {
-                        //Log.d("TAG", it.toString())
-                        showToast("That didn't work!" + it.toString())
-                    }
-                ))
-
-
-
-
-
-
+                albumViewModel.createAlbum(album)
 
             }else{
                 showToast("Validar:\n$mensaje")
             }
-
-
-
         }
 
         btnRetornar.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             }
-
             startActivity(intent)
         }
 
@@ -163,38 +143,38 @@ class CrearAlbum : AppCompatActivity() {
         toast.show()
     }
 
-    private fun validateInputs(name: TextInputEditText, cover: TextInputEditText, release: TextInputEditText, genre: MaterialAutoCompleteTextView, record: MaterialAutoCompleteTextView, description: TextInputEditText): Pair<Boolean, String>{
+    private fun validateInputs(name: String, cover: String, release: String, genre: String, record: String, description: String): Pair<Boolean, String>{
         var mensaje: String = ""
         var retorno: Boolean = true
 
-        if (name.text.toString().isEmpty()){
+        if (name.isEmpty()){
             mensaje += "• ${getString(R.string.nameAlbum)} \n"
-            retorno = false;
+            retorno = false
         }
 
-        if (cover.text.toString().isEmpty()){
+        if (cover.isEmpty()){
             mensaje += "• ${getString(R.string.nameUrl)} \n"
-            retorno = false;
+            retorno = false
         }
 
-        if (release.text.toString().isEmpty()){
+        if (release.isEmpty()){
             mensaje += "• ${getString(R.string.dateRelease)} \n"
-            retorno = false;
+            retorno = false
         }
 
-        if (genre.text.toString().isEmpty()){
+        if (genre.isEmpty()){
             mensaje += "• ${getString(R.string.inputGenre)} \n"
-            retorno = false;
+            retorno = false
         }
 
-        if (record.text.toString().isEmpty()){
+        if (record.isEmpty()){
             mensaje += "• ${getString(R.string.inputRecord)} \n"
-            retorno = false;
+            retorno = false
         }
 
-        if (description.text.toString().isEmpty()){
+        if (description.isEmpty()){
             mensaje += "• ${getString(R.string.inputDescription)} \n"
-            retorno = false;
+            retorno = false
         }
 
         return Pair(retorno, mensaje)
