@@ -69,6 +69,7 @@ dependencies {
 
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
+    //implementation(libs.androidx.material3)
 
     // Dependencia para las pruebas de Espresso
     androidTestImplementation (libs.androidx.espresso.core.v340)
