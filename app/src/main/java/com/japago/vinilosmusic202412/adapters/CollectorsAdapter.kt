@@ -7,6 +7,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.japago.vinilosmusic202412.R
+import com.japago.vinilosmusic202412.data.model.Album
 import com.japago.vinilosmusic202412.data.model.Collector
 import com.japago.vinilosmusic202412.databinding.CollectorItemBinding
 
@@ -14,6 +15,13 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
 
 
     var collectors :List<Collector> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    var albumes :List<Album> = emptyList()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value

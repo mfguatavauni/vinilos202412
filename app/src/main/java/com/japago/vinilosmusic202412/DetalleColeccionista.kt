@@ -1,27 +1,26 @@
 package com.japago.vinilosmusic202412
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.cardview.widget.CardView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.textfield.TextInputEditText
 import com.japago.vinilosmusic202412.adapters.CollectorsAdapter
-import com.japago.vinilosmusic202412.databinding.CollectorItemBinding
+import com.japago.vinilosmusic202412.data.model.Album
 import com.japago.vinilosmusic202412.data.model.Collector
-import com.japago.vinilosmusic202412.viewmodels.CollectorViewModel
+import com.japago.vinilosmusic202412.databinding.DetailCollectorBinding
+import com.japago.vinilosmusic202412.viewmodels.DetailCollectorViewModel
 
-class CatalogoColeccionistas : AppCompatActivity() {
+class DetalleColeccionista: AppCompatActivity() {
 
-    private lateinit var binding: CollectorItemBinding
-    private val collectorViewModel: CollectorViewModel by viewModels()
+    private lateinit var binding: DetailCollectorBinding
+    private val detailCollectorViewModel: DetailCollectorViewModel by viewModels()
     private var viewModelAdapter: CollectorsAdapter? = null
     private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,13 +31,13 @@ class CatalogoColeccionistas : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = viewModelAdapter
 
-        binding = CollectorItemBinding.inflate(layoutInflater)
+        binding = DetailCollectorBinding.inflate(layoutInflater)
         //setContentView(binding.root)
 
         // Observar cambios en coleccionistas y actualizar la interfaz de usuario
-        collectorViewModel.collectors.observe(this, Observer<List<Collector>>{ it ->
+        detailCollectorViewModel.albumes_collector.observe(this, Observer<List<Album>>{ it ->
             it.apply {
-                viewModelAdapter!!.collectors = this
+                viewModelAdapter!!.albumes = this
             }
         })
 
@@ -53,13 +52,6 @@ class CatalogoColeccionistas : AppCompatActivity() {
 
         btnRegresar.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
-        val cvAlbumes: CardView = findViewById(R.id.cvAlbumes)
-
-        cvAlbumes.setOnClickListener {
-            val intent = Intent(this, CatalogoAlbumes::class.java)
             startActivity(intent)
         }
     }
