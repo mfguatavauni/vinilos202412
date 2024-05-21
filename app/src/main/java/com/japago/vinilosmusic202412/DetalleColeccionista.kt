@@ -25,9 +25,9 @@ class DetalleColeccionista: AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_catalogo_coleccionistas)
+        setContentView(R.layout.detail_collector)
         viewModelAdapter = CollectorsAdapter()
-        recyclerView = findViewById(R.id.collector_item_rv)
+        recyclerView = findViewById(R.id.albumes_collector_rv)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = viewModelAdapter
 
@@ -42,18 +42,18 @@ class DetalleColeccionista: AppCompatActivity() {
         })
 
         enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
+        }*/
 
-        val btnRegresar: Button = findViewById(R.id.btnRegresarCatalogoAlbumes)
+        /*val btnRegresar: Button = findViewById(R.id.btnRegresarCatalogoAlbumes)
 
         btnRegresar.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-        }
+        }*/
     }
 
 }

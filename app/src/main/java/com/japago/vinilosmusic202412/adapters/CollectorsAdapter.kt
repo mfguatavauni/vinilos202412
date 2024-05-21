@@ -1,11 +1,13 @@
 package com.japago.vinilosmusic202412.adapters
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.japago.vinilosmusic202412.DetalleColeccionista
 import com.japago.vinilosmusic202412.R
 import com.japago.vinilosmusic202412.data.model.Album
 import com.japago.vinilosmusic202412.data.model.Collector
@@ -52,6 +54,14 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
         companion object {
             @LayoutRes
             val LAYOUT = R.layout.collector_item
+        }
+
+        init {
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetalleColeccionista::class.java)
+                intent.putExtra("id_album", 1)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 }

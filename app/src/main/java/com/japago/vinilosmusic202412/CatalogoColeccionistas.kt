@@ -55,13 +55,6 @@ class CatalogoColeccionistas : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
-        val cvAlbumes: CardView = findViewById(R.id.cvAlbumes)
-
-        cvAlbumes.setOnClickListener {
-            val intent = Intent(this, CatalogoAlbumes::class.java)
-            startActivity(intent)
-        }
     }
 
 }
