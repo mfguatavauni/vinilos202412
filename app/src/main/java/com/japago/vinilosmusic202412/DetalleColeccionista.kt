@@ -36,7 +36,7 @@ class DetalleColeccionista: AppCompatActivity() {
         val collectorPhone = findViewById<TextView>(R.id.txtPhone)
         val collectorEmai = findViewById<TextView>(R.id.txtEmail)
 
-        val collectorId:Int = intent.getIntExtra("id_collector",1)
+        val collectorId:Int = intent.getStringExtra("id_collector")!!.toInt()
         collectorName.text = intent.getStringExtra("name_collector")
         collectorPhone.text = intent.getStringExtra("phone_collector")
         collectorEmai.text = intent.getStringExtra("email_collector")
@@ -46,7 +46,7 @@ class DetalleColeccionista: AppCompatActivity() {
             "You can only access the viewModel after onActivityCreated()"
         }
 
-        detailCollectorViewModel = ViewModelProvider(this, DetailCollectorViewModel.Factory(this.application,1)).get(DetailCollectorViewModel::class.java)
+        detailCollectorViewModel = ViewModelProvider(this, DetailCollectorViewModel.Factory(this.application,collectorId)).get(DetailCollectorViewModel::class.java)
         detailCollectorViewModel.albumes_collector.observe(this, Observer<List<Album>>{ it ->
             it.apply {
                 viewModelAdapter!!.albumes = this

@@ -51,7 +51,7 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
         init {
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetalleColeccionista::class.java)
-                intent.putExtra("id_collector", viewDataBinding.collector!!.collectorId)
+                intent.putExtra("id_collector", viewDataBinding.txtColectorId.text)
                 intent.putExtra("name_collector", viewDataBinding.txtName.text)
                 intent.putExtra("phone_collector", viewDataBinding.txtPhone.text)
                 intent.putExtra("email_collector", viewDataBinding.txtEmail.text)

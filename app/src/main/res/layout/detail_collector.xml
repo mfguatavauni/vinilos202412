@@ -136,6 +136,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/albumes_collector_rv"
         android:layout_width="match_parent"
-        android:layout_height="336dp"
+        android:layout_height="match_parent"
         tools:listitem="@layout/albumes_collector" />
 </LinearLayout>
