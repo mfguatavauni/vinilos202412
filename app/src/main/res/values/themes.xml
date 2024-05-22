@@ -6,7 +6,7 @@
     </style>
 
     <style name="Theme.VinilosMusic202412" parent="Base.Theme.VinilosMusic202412" >
-        background: @color/backcolor;
         <item name="background">@color/backcolor</item>
+        <item name="android:windowBackground">@color/backcolor</item>
     </style>
 </resources>

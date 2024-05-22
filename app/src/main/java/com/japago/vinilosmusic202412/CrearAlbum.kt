@@ -46,7 +46,7 @@ class CrearAlbum : AppCompatActivity() {
         setContentView(binding.root)
 
         albumViewModel.albumModel.observe(this) { currentAlbum ->
-            showToast("Album creado correctamente " + currentAlbum.id)
+            showToast("@string/msgCreateSuccess" + currentAlbum.id)
             Handler(Looper.getMainLooper()).postDelayed({
                 //Retornar a la pantalla principal
                 val intent = Intent(this, MainActivity::class.java)
