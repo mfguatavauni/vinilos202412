@@ -49,6 +49,46 @@ class NetworkServiceAdapter(context: Context) {
             }))
     }
 
+    fun getCollector(collectorId:Int, onComplete:(resp:Collector)->Unit, onError: (error: VolleyError)->Unit) {
+        requestQueue.add(getRequest("collectors/$collectorId",
+            { response ->
+                val resp = JSONArray(response)
+                var collector: Collector? = null
+                var item:JSONObject? = null
+
+                if(resp.length() > 0)
+                {
+                    item = resp.getJSONObject(0)
+                    Log.d("Response", item.toString())
+                    collector = Collector(collectorId = item.getInt("id"),name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email"), comments = listOf()  , favoritePerformers = listOf() , collectorAlbums = listOf())
+                }
+
+                if (collector != null) {
+                    onComplete(collector)
+                }
+            },
+            {
+                onError(it)
+            }))
+    }
+
+    fun getAlbumesCollector(collectorId:Int, onComplete:(resp:List<Album>)->Unit, onError: (error: VolleyError)->Unit) {
+        requestQueue.add(getRequest("collectors/$collectorId/albums",
+            { response ->
+                Log.d("tag", response)
+                val resp = JSONArray(response)
+                val list = mutableListOf<Album>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i).getJSONObject("album")
+                    list.add(i, Album(id = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), releaseDate = item.getString("releaseDate"), description = item.getString("description"),genre = item.getString("genre"),recordLabel = item.getString("recordLabel")))
+                }
+                onComplete(list)
+            },
+            {
+                onError(it)
+            }))
+    }
+
     fun createAlbum(album: Album, onComplete:(resp:JSONObject)->Unit, onError: (error: VolleyError)->Unit) {
         val postParams = mapOf<String, Any>(
             "name" to  album.name,

@@ -28,6 +28,9 @@
             android:name=".CatalogoColeccionistas"
             android:exported="false" />
         <activity
+            android:name=".DetalleColeccionista"
+            android:exported="false" />
+        <activity
             android:name=".CatalogoAlbumes"
             android:exported="false" />
         <activity
