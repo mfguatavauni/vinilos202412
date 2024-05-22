@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.japago.vinilosmusic202412.DetalleColeccionista
 import com.japago.vinilosmusic202412.R
-import com.japago.vinilosmusic202412.data.model.Album
 import com.japago.vinilosmusic202412.data.model.Collector
 import com.japago.vinilosmusic202412.databinding.CollectorItemBinding
 
@@ -53,7 +51,7 @@ class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHo
         init {
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetalleColeccionista::class.java)
-                intent.putExtra("id_collector", 1)
+                intent.putExtra("id_collector", viewDataBinding.collector!!.collectorId)
                 intent.putExtra("name_collector", viewDataBinding.txtName.text)
                 intent.putExtra("phone_collector", viewDataBinding.txtPhone.text)
                 intent.putExtra("email_collector", viewDataBinding.txtEmail.text)

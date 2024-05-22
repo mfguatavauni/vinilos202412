@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.japago.vinilosmusic202412.adapters.CollectorItemAdapter
@@ -17,7 +19,7 @@ import com.japago.vinilosmusic202412.viewmodels.DetailCollectorViewModel
 class DetalleColeccionista: AppCompatActivity() {
 
     private lateinit var binding: DetailCollectorBinding
-    private val detailCollectorViewModel: DetailCollectorViewModel by viewModels()
+    private lateinit var detailCollectorViewModel: DetailCollectorViewModel //by viewModels()
     private var viewModelAdapter: CollectorItemAdapter? = null
     private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,11 +36,17 @@ class DetalleColeccionista: AppCompatActivity() {
         val collectorPhone = findViewById<TextView>(R.id.txtPhone)
         val collectorEmai = findViewById<TextView>(R.id.txtEmail)
 
+        val collectorId:Int = intent.getIntExtra("id_collector",1)
         collectorName.text = intent.getStringExtra("name_collector")
         collectorPhone.text = intent.getStringExtra("phone_collector")
         collectorEmai.text = intent.getStringExtra("email_collector")
 
         // Observar cambios en coleccionistas y actualizar la interfaz de usuario
+        val activity = requireNotNull(this) {
+            "You can only access the viewModel after onActivityCreated()"
+        }
+
+        detailCollectorViewModel = ViewModelProvider(this, DetailCollectorViewModel.Factory(this.application,1)).get(DetailCollectorViewModel::class.java)
         detailCollectorViewModel.albumes_collector.observe(this, Observer<List<Album>>{ it ->
             it.apply {
                 viewModelAdapter!!.albumes = this
