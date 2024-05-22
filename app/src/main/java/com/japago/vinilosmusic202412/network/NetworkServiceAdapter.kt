@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley
 import com.japago.vinilosmusic202412.data.model.Album
 import com.japago.vinilosmusic202412.data.model.Band
 import com.japago.vinilosmusic202412.data.model.Collector
+import com.japago.vinilosmusic202412.data.model.Track
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -58,6 +59,22 @@ class NetworkServiceAdapter(context: Context) {
             "recordLabel" to  album.recordLabel
         )
         requestQueue.add(postRequest("albums", JSONObject(postParams),
+            { response ->
+                onComplete(response)
+            },
+            {
+                onError(it)
+            }))
+    }
+
+    fun addTrack(track: Track, onComplete:(resp:JSONObject)->Unit, onError: (error: VolleyError)->Unit) {
+        val idAlbum = track.albumId
+
+        val postParams = mapOf<String, Any>(
+            "name" to  track.name,
+            "duration" to  track.duration
+        )
+        requestQueue.add(postRequest("albums/" + idAlbum + "/tracks", JSONObject(postParams),
             { response ->
                 onComplete(response)
             },

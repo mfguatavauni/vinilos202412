@@ -6,7 +6,6 @@
     <string name="artista">Conocer Artistas</string>
     <string name="albumes">Conocer Albumes</string>
     <string name="coleccionistas">Conocer Coleccionistas</string>
-    <string name="track">Crear Track</string>
     <string name="album">Crear Album</string>
     <string name="nameAlbum">Ingrese nombre del album</string>
     <string name="nameUrl">Ingrese url del cover</string>
@@ -17,12 +16,18 @@
     <string name="inputName">Name</string>
     <string name="inputPhone">Phone</string>
     <string name="inputEmail">Email</string>
+    <string name="inputSongName">Nombre de la canción</string>
+    <string name="inputDuration">Duración formato mm:ss</string>
+
 
     <!-- Strings used for Buttons -->
     <string name="btnSave">Grabar</string>
     <string name="btnReturn">Retornar</string>
+    <string name="btnAddTrack">+ Adicionar Track</string>
     <string name="title_catalogo_albumes">Catalogo de Albumes</string>
     <string name="img_descripcion">Vinilos</string>
 
+    <!-- Mensajes y acciones -->
+    <string name="msgCreateSuccess">Creado correctamente</string>
 
 </resources>
