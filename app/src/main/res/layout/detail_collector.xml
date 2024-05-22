@@ -61,7 +61,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_margin="3dp"
-                        android:text="@{collector.name}"
                         android:background="@color/white"
                         android:textStyle="bold" />
 
@@ -90,7 +89,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_margin="3dp"
-                        android:text="@{collector.telephone}"
                         android:background="@color/white"
                         android:textStyle="bold" />
 
@@ -119,7 +117,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_margin="3dp"
-                        android:text="@{collector.email}"
                         android:background="@color/white"
                         android:textStyle="bold" />
 
@@ -131,6 +128,7 @@
             android:id="@+id/imgColeccionistas"
             android:layout_width="85dp"
             android:layout_height="match_parent"
+            android:paddingRight="10dp"
             android:gravity="center"
             android:contentDescription="@string/img_descripcion"
             app:srcCompat="@drawable/collectors" />
