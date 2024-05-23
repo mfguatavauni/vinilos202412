@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-            <variable name="collector" type="com.japago.vinilosmusic202412.data.model.Collector"/>
-    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DetalleColeccionista">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey"
+        android:paddingTop="1dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="330dp"
         android:layout_height="110dp"
         android:layout_marginVertical="1dp"
         android:orientation="vertical"
@@ -37,16 +46,8 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/txtColectorId"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:text="@{Integer.toString(collector.collectorId)}"
-                        android:background="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
                         android:id="@+id/lblName"
-                        android:layout_width="80dp"
+                        android:layout_width="70dp"
                         android:layout_height="25dp"
                         android:paddingStart="8dp"
                         android:paddingTop="3dp"
@@ -60,7 +61,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_margin="3dp"
-                        android:text="@{collector.name}"
                         android:background="@color/white"
                         android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
 
                     <TextView
                         android:id="@+id/lblPhone"
-                        android:layout_width="80dp"
+                        android:layout_width="70dp"
                         android:layout_height="25dp"
                         android:paddingStart="8dp"
                         android:paddingTop="3dp"
@@ -89,7 +89,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_margin="3dp"
-                        android:text="@{collector.telephone}"
                         android:background="@color/white"
                         android:textStyle="bold" />
 
@@ -104,7 +103,7 @@
 
                     <TextView
                         android:id="@+id/lblEmail"
-                        android:layout_width="80dp"
+                        android:layout_width="70dp"
                         android:layout_height="25dp"
                         android:paddingStart="8dp"
                         android:paddingTop="3dp"
@@ -118,13 +117,25 @@
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_margin="3dp"
-                        android:text="@{collector.email}"
                         android:background="@color/white"
                         android:textStyle="bold" />
 
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
-</layout>
+        <ImageView
+            android:id="@+id/imgColeccionistas"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:contentDescription="@string/img_descripcion"
+            app:srcCompat="@drawable/collectors" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/albumes_collector_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/albumes_collector" />
+</LinearLayout>
