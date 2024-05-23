@@ -149,4 +149,20 @@ class NetworkServiceAdapter(context: Context) {
                 onError(it)
             }))
     }
+
+    fun getBandById(bandId:Int,onComplete:(resp:Band)->Unit, onError: (error: VolleyError)->Unit){
+        requestQueue.add(getRequest(path = "bands/$bandId",
+            { response ->
+                val resp = JSONArray(response)
+                if (resp.length() > 0){
+                    val item = resp.getJSONObject(0)
+                    val band = Band(id = item.getInt("id"),name = item.getString("name"), image = item.getString("image"), description = item.getString("description"), creationDate = item.getString("creationDate"),  albums = listOf(), musicians = listOf(), performerPrizes = listOf())
+
+                    onComplete(band)
+                }
+            },
+            {
+                onError(it)
+            }))
+    }
 }
