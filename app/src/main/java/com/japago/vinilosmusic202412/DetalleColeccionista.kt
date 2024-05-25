@@ -2,6 +2,7 @@ package com.japago.vinilosmusic202412
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -60,12 +61,12 @@ class DetalleColeccionista: AppCompatActivity() {
             insets
         }*/
 
-        /*val btnRegresar: Button = findViewById(R.id.btnRegresarCatalogoAlbumes)
+        val btnRegresar: Button = findViewById(R.id.btnRegresarCatalogoColeccionistas)
 
         btnRegresar.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, CatalogoColeccionistas::class.java)
             startActivity(intent)
-        }*/
+        }
     }
 
 }

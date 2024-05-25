@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:background="@color/backcolor"
     tools:context=".CatalogoColeccionistas">
-
     <Button
         android:id="@+id/btnRegresarCatalogoAlbumes"
         android:layout_width="match_parent"
@@ -19,6 +18,7 @@
         android:textStyle="bold"
         android:layout_marginBottom="10dp"
         android:textColor="@color/black" />
+
 
     <ImageView
         android:id="@+id/imgCabecera"
