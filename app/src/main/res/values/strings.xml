@@ -30,4 +30,7 @@
     <!-- Mensajes y acciones -->
     <string name="msgCreateSuccess">Creado correctamente</string>
 
+    <!--contentDescription activity_detalle_banda-->
+    <string name="ivband_image">Imagen de la banda o artista</string>
+
 </resources>

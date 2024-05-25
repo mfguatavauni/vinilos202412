@@ -1,6 +1,7 @@
 package com.japago.vinilosmusic202412.data
 
 import com.japago.vinilosmusic202412.data.model.AlbumesItem
+import com.japago.vinilosmusic202412.data.model.Band
 import com.japago.vinilosmusic202412.data.model.Collector
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,6 +20,9 @@ interface RetrofitService {
 
     @GET("albums/{id}")
     suspend fun getAlbumDetails(@Path("id") id: String): AlbumesItem
+
+    @GET("bands/{id}")
+    suspend fun getBandDetails(@Path("id") id: String): Band
 }
 
 object RetrofitServiceFactory{
