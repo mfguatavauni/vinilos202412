@@ -32,5 +32,8 @@
 
     <!--contentDescription activity_detalle_banda-->
     <string name="ivband_image">Imagen de la banda o artista</string>
+    <string name="tv_detalleBanda_nombre">Nombre:</string>
+    <string name="tv_detalleBanda_fecha">Fecha:</string>
+    <string name="tv_detalleBanda_descripcion">Descripción:</string>
 
 </resources>

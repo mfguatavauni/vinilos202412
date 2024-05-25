@@ -8,10 +8,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.japago.vinilosmusic202412.data.model.Band
 import com.japago.vinilosmusic202412.network.NetworkServiceAdapter
+import com.japago.vinilosmusic202412.repositories.BandsRepository
 
 
 class BandViewModel(application: Application) :  AndroidViewModel(application) {
     private val _bands = MutableLiveData<List<Band>>()
+    private val bandsRepository = BandsRepository(application);
 
     val bands: LiveData<List<Band>>
         get() = _bands
@@ -31,7 +33,7 @@ class BandViewModel(application: Application) :  AndroidViewModel(application) {
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getBands({
+        bandsRepository.getBands({
             _bands.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
