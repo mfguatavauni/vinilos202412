@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 
 class DetalleBanda : AppCompatActivity() {
 
@@ -17,14 +18,18 @@ class DetalleBanda : AppCompatActivity() {
         setContentView(R.layout.activity_detalle_banda)
 
         val bandName = findViewById<TextView>(R.id.tvName)
-        val bandimagee = findViewById<ImageView>(R.id.band_image)
+        val bandimage = findViewById<ImageView>(R.id.band_image)
         val bandDate = findViewById<TextView>(R.id.tvDate)
         val bandDescription = findViewById<TextView>(R.id.tvDescription)
 
         val bandId:Int = intent.getStringExtra("id_band")!!.toInt()
+        val pathImage:String = intent.getStringExtra("image_band")!!
+
         bandName.text = intent.getStringExtra("name_band")
         bandDate.text = intent.getStringExtra("date_band")
         bandDescription.text = intent.getStringExtra("description_band")
+
+        Glide.with(this@DetalleBanda).load(pathImage).into(bandimage)
 
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.band_detail)) { v, insets ->
