@@ -1,15 +1,44 @@
 package com.japago.vinilosmusic202412
 
-import androidx.activity.viewModels
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.japago.vinilosmusic202412.adapters.BandsDetailAdapter
-import com.japago.vinilosmusic202412.databinding.BandItemBinding
-import com.japago.vinilosmusic202412.viewmodels.BandViewModel
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class DetalleBanda : AppCompatActivity() {
-    private lateinit var binding: BandItemBinding
-    private val bandViewModel: BandViewModel by viewModels()
-    private var viewModelAdapter: BandsDetailAdapter? = null
-    private lateinit var recyclerView: RecyclerView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_detalle_banda)
+
+        val bandName = findViewById<TextView>(R.id.tvName)
+        val bandimagee = findViewById<ImageView>(R.id.band_image)
+        val bandDate = findViewById<TextView>(R.id.tvDate)
+        val bandDescription = findViewById<TextView>(R.id.tvDescription)
+
+        val bandId:Int = intent.getStringExtra("id_band")!!.toInt()
+        bandName.text = intent.getStringExtra("name_band")
+        bandDate.text = intent.getStringExtra("date_band")
+        bandDescription.text = intent.getStringExtra("description_band")
+
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.band_detail)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        val btnRegresar: Button = findViewById(R.id.btnRegresarCatalogoBandas)
+
+        btnRegresar.setOnClickListener {
+            val intent = Intent(this, CatalogoBandas::class.java)
+            startActivity(intent)
+        }
+    }
+
 }
