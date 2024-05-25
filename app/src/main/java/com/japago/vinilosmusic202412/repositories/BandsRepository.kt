@@ -15,4 +15,12 @@ class BandsRepository (val application: Application){
             onError
         )
     }
+
+    fun getBands(callback: (List<Band>)->Unit, onError: (VolleyError)->Unit) {
+        NetworkServiceAdapter.getInstance(application).getBands({
+            callback(it)
+        },
+            onError
+        )
+    }
 }
