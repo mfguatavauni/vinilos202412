@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/backcolor"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnRegresarDetalleAlbumes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary"
+            android:text="@string/btnReturn"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:elevation="4dp"/>
+
+
+        <!--Control Nombre del Album -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idAlbumName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:gravity="center"
+                android:importantForAccessibility="no"
+                style="@android:style/Widget.EditText"
+                android:focusable="false"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Control nombre cancion -->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/inputSongName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idSongName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="200"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--Control Duracion-->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/inputDuration">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idSongDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="200"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/btnAddTrack" />
+
+
+    </LinearLayout>
+
+</ScrollView>
