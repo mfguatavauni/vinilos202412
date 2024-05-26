@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley
 import com.japago.vinilosmusic202412.data.model.Album
 import com.japago.vinilosmusic202412.data.model.Band
 import com.japago.vinilosmusic202412.data.model.Collector
+import com.japago.vinilosmusic202412.data.model.Track
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -48,6 +49,46 @@ class NetworkServiceAdapter(context: Context) {
             }))
     }
 
+    fun getCollector(collectorId:Int, onComplete:(resp:Collector)->Unit, onError: (error: VolleyError)->Unit) {
+        requestQueue.add(getRequest("collectors/$collectorId",
+            { response ->
+                val resp = JSONArray(response)
+                var collector: Collector? = null
+                var item:JSONObject? = null
+
+                if(resp.length() > 0)
+                {
+                    item = resp.getJSONObject(0)
+                    Log.d("Response", item.toString())
+                    collector = Collector(collectorId = item.getInt("id"),name = item.getString("name"), telephone = item.getString("telephone"), email = item.getString("email"), comments = listOf()  , favoritePerformers = listOf() , collectorAlbums = listOf())
+                }
+
+                if (collector != null) {
+                    onComplete(collector)
+                }
+            },
+            {
+                onError(it)
+            }))
+    }
+
+    fun getAlbumesCollector(collectorId:Int, onComplete:(resp:List<Album>)->Unit, onError: (error: VolleyError)->Unit) {
+        requestQueue.add(getRequest("collectors/$collectorId/albums",
+            { response ->
+                Log.d("tag", response)
+                val resp = JSONArray(response)
+                val list = mutableListOf<Album>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i).getJSONObject("album")
+                    list.add(i, Album(id = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), releaseDate = item.getString("releaseDate"), description = item.getString("description"),genre = item.getString("genre"),recordLabel = item.getString("recordLabel")))
+                }
+                onComplete(list)
+            },
+            {
+                onError(it)
+            }))
+    }
+
     fun createAlbum(album: Album, onComplete:(resp:JSONObject)->Unit, onError: (error: VolleyError)->Unit) {
         val postParams = mapOf<String, Any>(
             "name" to  album.name,
@@ -58,6 +99,22 @@ class NetworkServiceAdapter(context: Context) {
             "recordLabel" to  album.recordLabel
         )
         requestQueue.add(postRequest("albums", JSONObject(postParams),
+            { response ->
+                onComplete(response)
+            },
+            {
+                onError(it)
+            }))
+    }
+
+    fun addTrack(track: Track, onComplete:(resp:JSONObject)->Unit, onError: (error: VolleyError)->Unit) {
+        val idAlbum = track.albumId
+
+        val postParams = mapOf<String, Any>(
+            "name" to  track.name,
+            "duration" to  track.duration
+        )
+        requestQueue.add(postRequest("albums/" + idAlbum + "/tracks", JSONObject(postParams),
             { response ->
                 onComplete(response)
             },
@@ -79,6 +136,22 @@ class NetworkServiceAdapter(context: Context) {
 
     fun getBands(onComplete:(resp:List<Band>)->Unit, onError: (error: VolleyError)->Unit){
         requestQueue.add(getRequest(path = "bands",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Band>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Band(id = item.getInt("id"),name = item.getString("name"), image = item.getString("image"), description = item.getString("description"), creationDate = item.getString("creationDate"),  albums = listOf(), musicians = listOf(), performerPrizes = listOf()))
+                }
+                onComplete(list)
+            },
+            {
+                onError(it)
+            }))
+    }
+
+    fun getBandById(bandId:Int,onComplete:(resp:List<Band>)->Unit, onError: (error: VolleyError)->Unit){
+        requestQueue.add(getRequest(path = "bands/$bandId",
             { response ->
                 val resp = JSONArray(response)
                 val list = mutableListOf<Band>()

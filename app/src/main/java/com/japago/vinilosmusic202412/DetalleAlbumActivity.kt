@@ -49,9 +49,19 @@ class DetalleAlbumActivity : AppCompatActivity() {
         }
 
         val btnRegresar: Button = findViewById(R.id.btnRegresarDetalleAlbumes)
+        val btnAdicionarTrack: Button = findViewById(R.id.btnAddTrack)
 
         btnRegresar.setOnClickListener {
             val intent = Intent(this, CatalogoAlbumes::class.java)
+            startActivity(intent)
+        }
+
+
+        btnAdicionarTrack.setOnClickListener {
+            val albumName =  findViewById<TextView>(R.id.albumName)
+            val intent = Intent(this, activity_adicionar_track::class.java)
+            intent.putExtra("id_album", idAlbum)
+            intent.putExtra("album_name", albumName.text)
             startActivity(intent)
         }
     }

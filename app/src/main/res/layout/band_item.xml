@@ -28,7 +28,6 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
 
-
                     <TextView
                         android:id="@+id/txtName"
                         android:paddingTop="3dp"
@@ -43,7 +42,29 @@
                         app:drawableEndCompat="@drawable/vector_flecha_derecha"
                         app:drawableStartCompat="@drawable/vector_person" />
 
+                    <TextView
+                        android:id="@+id/txtBandId"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@{Integer.toString(band.id)}" />
 
+                    <TextView
+                        android:id="@+id/txtBandImage"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@{band.image}" />
+
+                    <TextView
+                        android:id="@+id/txtBandDate"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@{band.creationDate}" />
+
+                    <TextView
+                        android:id="@+id/txtBandDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@{band.description}" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

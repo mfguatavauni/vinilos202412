@@ -37,6 +37,14 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/txtColectorId"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:text="@{Integer.toString(collector.collectorId)}"
+                        android:background="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
                         android:id="@+id/lblName"
                         android:layout_width="80dp"
                         android:layout_height="25dp"
